@@ -1,65 +1,97 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>PKUMAR</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
+        <section className={styles.grid}>
+          <div className={styles.heroTypo}>
+            <h3>Software Engineer</h3>
+            <h1 className={styles.title}>Princen Kumar</h1>
+            <p className={styles.description}>
+              Portfolio of developed and upcoming software projects, fullstack
+              and web-based.
+            </p>
+          </div>
+          <div className={styles.heroImg}>
+            <Image
+              src="/taxi-searching.png"
+              alt="Page Illustration"
+              width={500}
+              height={500}
+            />
+          </div>
+        </section>
+        <div className={styles.card}></div>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
+          <div className={styles["hero-img"]}>
+            <Image
+              src="/README.png"
+              alt="Code Stock"
+              width={700}
+              height={500}
+            />
+          </div>
+          <div className={styles["hero-typo"]}>
+            <h3>
+              <Image
+                src="/javascript-logo.svg"
+                alt="JavaScript"
+                width={30}
+                height={30}
+              />
+              JAVASCRIPT
+            </h3>
+            <h1>artist-degrees</h1>
             <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+              erat, sed diam voluptua.
             </p>
-          </a>
+          </div>
         </div>
-      </main>
 
+        <div className={styles.grid}>
+          <div className={styles["hero-typo"]}>
+            <h3>
+              <Image
+                src="/javascript-logo.svg"
+                alt="JavaScript"
+                width={30}
+                height={30}
+              />
+              JAVASCRIPT
+            </h3>
+            <h1>artist-degrees</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+              nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+              erat, sed diam voluptua.
+            </p>
+          </div>
+          <div className={styles["hero-img"]}>
+            <Image
+              src="/README.png"
+              alt="Code Stock"
+              width={700}
+              height={500}
+            />
+          </div>
+        </div>
+
+
+      </main>
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
+        <p>Built with NEXT.JS</p>
       </footer>
     </div>
-  )
+  );
 }
