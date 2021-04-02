@@ -1,0 +1,50 @@
+.nav {
+  height: 80px;
+  padding: 10px;
+  color: black;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  list-style: none;
+}
+
+.nav p {
+  font-family: 'Lexend', sans-serif;
+}
+
+.underline {
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  font-weight: bold;
+  
+  display: inline-block;
+  padding: 5px 10px;
+  position: relative;
+}
+
+.underline:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 20%;
+  position: absolute;
+  background: #000;
+  transition: width 0.2s ease 0s, left 0.2s ease 0s;
+  width: 0;
+}
+
+.underline:hover:after {
+  width: 100%; 
+  left: 0; 
+}
+
+
