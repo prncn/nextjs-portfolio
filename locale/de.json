@@ -1,0 +1,103 @@
+{
+  "Index": {
+    "heroHeading": "Ein paar Projekte.",
+    "heroSubheading": "Portfolio von entwickelten Code Projekten, fullstack und web-basiert. Based in Frankfurt. Ich mache derzeit meinen Bachelor.",
+    "caseHeading": "projekte",
+    "artstationLink": "Illustrationen",
+    "mailLink": "Kontakt", 
+    "currentProjectHeading": "Derzeitiges Code Projekt",
+    "currentProjectText": "ThreeJS Web App für Vektor-Modellierung"
+  },
+  "Resume": {
+    "resumeHeading": "Lebenslauf.",
+    "resumeIntro": "Ich habe viel Spaß am Designen, und noch mehr bei der Problemlösung mit Code. Mein Ansatz bei der Projektierung ist es, so nah wie möglich an die Anforderungen der Nutzer zu sein. Unabhängig vom Tech Stack, muss die Benutzbarkeit von Software stimmen, und dabei möglichst cool aussehen.",
+    "workExp": {
+      "u9": "Schülerpraktikum an einer Design Agentur. Mein Projekt war die eigenständige Erstellung einer 3D Animation für eine Kampagne der Karrieremesse <em>Hobit</em>.",
+      "xD": "Aushilfskraft als Software Engineer. Mein Projekt war die eigenständige Einführung einer Open Source ERP (Enterprise Resource Planning) Sofware. Mein Lösungsansatz war ein Python Programm, das bestehende Buchhaltungsdaten vom Firmenserver in eine neue Datenbank übersetzt."
+    },
+    "gitHeader": "Aktuelle Nutzung auf Github"
+  },
+  "Navbar": {
+    "works": "Projekte",
+    "resume": "Lebenslauf",
+    "locale": "en"
+  },
+  "ShowcaseCard": {
+    "murdocIntroText": "Eine Social Media App mit dem Twist, dass ein User Post aus einem PDF Dokument besteht. Die Spring (REST Server) / React (Client) App lässt Nutzer Dokumente teilen und entdecken in einer anderen Art.",
+    "mitmdemoIntroText": "Ein Man-in-the-Middle Angriffstool, das dich einen integrierten Chat Messenger angreifen lässt. Das Ziel dieser App ist es, Nutzern die Konzepte und Funktionsweise von MITM Proxys, Packet Sniffing und TLS Verschlüsselung näher zu bringen. Der Frontend wurde in React geschrieben und der Backend, insebesondere die MITM Logik, in Node.",
+    "playlistsIntroText": "Ursprünglich, war dieses Projekt ein Python Skript zur Importierung von YouTube Liked Content nach Spotify. Der Nutzer loggt sich ein mit seinen Google und Spotify Accounts. Das Projekt wurde nach und nach erweitert, mit einer Flask Web Platform, und weiteren Features.",
+    "degreesofseperationIntroText": "Six Degress of Seperation bezeichnet die Theorie, dass jede zwei beliebige Menschen auf der Welt von nur höchsten sechs Kontakten voneinander getrennt sind. Diese App spielt auf diese Theorie an, indem die Netzwerke zweier Musiker durch eine Datenbank erforscht werden. Das is realisiert durch ein Pfadfindungs-Algorithmus.",
+    "canisterIntroText": "Canister ist eine CRUD Applikation, auf der Nutzer Twitter-ähnliche Text-Posts erstellen können. Bei Anmeldung wird ein temporärer Nutzeraccount erstellt, der an die IP Adresse gebunden ist. Gebaut mit dem MEVN Stack: MongoDB, Express, Vue und Node.",
+    "schedulerIntroText": "Eine Java Desktop Applikation. Eine simple Orga App, zum organisieren von Events und Terminen. Die UI ist mit einem eigenen Microframework auf Java Swing Basis erstellt. Die Datenbank ist eine MySQL Cloud Lösung.",
+    "next": "Nächstes Projekt"
+  },
+  "PlaylistsShowcase": {
+    "t1": {
+      "h": "Die Idee",
+      "p1": "Das Projekt begann als Python Skript, welches später zu einer Flask Web App erweitert wurde. Das Hauptfeature ermöglicht es, Musik Content vom YouTube Account des Nutzers zu lesen (wie zum Beispiel Musikvideos), um diese dann in eine Spotify Playlist zu importieren. Dafür muss sich der Nutzer mit seinem Google und Spotify Account einloggen. Zudem kann der Nutzer seine Spotify Playlists betrachten und Stastiken über seine Hörverhalten betrachten."
+    },
+    "t2": {
+      "h": "Wie es gebaut wurde",
+      "p1": "Dieses Projekt war mein erster Versuch eine App zu bauen. Das Skript kommuniziert mit den öffentlichen APIs von Spotify und Google. Die größte Herausforderung war es, die Authentifizierung für die beiden Services über Python zu implementieren. Dazu wurde eine Schnittstelle für <em>OAuth 2.0</em> benötigt, welche von Spotify und Google verwendet wird. Flask ist ein Framework zur Entwicklung von Python-basierten Web Applikationen. Damit wurde der Frontend und Server Side Logik gebaut."
+    }
+  },
+  "MitmDemoShowcase": {
+    "t1": {
+      "h": "Die Idee",
+      "p1": "Die App enstand als Uni Projekt zu dem Thema Datensicherheit. Das Projekt beschäftigt sich mit dem Thema <em>Man in the Middle Attacks</em>. Dies beschreibt den Vorgang eines Angreifers sich als dritte Person zwischen zweier Instanzen zu begeben, um Daten zwischen den Beiden abzuhören oder zu manipulieren.",
+      "p2": "Die App enthält einen integrierten Chat Messenger, welches über <em>Web Sockets</em> kommuniziert. Der Sinn dabei ist es, eine vertraute App Nutzung zu simulieren, und gleichzeitig Daten zu generieren, die abgefangen werden können durch unsere Proxy Instanz.",
+      "p3": "Unser 'Hacking' Tool ist designed so auszusehen, wie eine gewöhnliche OS Bash Konsole. Darin, kann der Nutzer eine Auswahl von 'Attacken' auslösen die durch unserem Proxy Code kompiliert werden. So kann man beispielsweise Nachricht lesen (über Netzwerkpakete), selbst Nachrichten einschleusen und sie verändern."
+    },
+    "t2": {
+      "h": "Wie es gebaut wurde",
+      "p1": "Das Frontend wurde mit <em>React</em> gebaut. Das Backend wurde in <em>NodeJS</em> geschrieben. Unser Backend startet einen Proxy Server, welches als unsere <em>MITM Instanz</em> zwischen Client und Server fungiert. Ein weiterer Web Server hat die Aufgabe Socket Protokolle, API Routen und Ähnliches zu behandeln.",
+      "p2": "Der Proxy Server fängt jeglichen Datenverkehr zwischen Client und Server ab. Diese Mechanik des Abfangen und des Weiterleiten ist das Hauptprinzip des Tools. Der Zweck des Projekts ist es, auf eine möglichst nahe und interaktive Art MITM Attacken zu erläutern."
+    }
+  },
+  "MurdocShowcase": {
+    "t1": {
+      "h": "Die Idee",
+      "p1": "Die React App wurde für ein Uni Projekt entwickelt. Unsere Vorgabe war es, eine Datenbank mit einer Schittstelle oder Maske zu entwickeln.",
+      "p2": "<em>Murdoc</em> ist eine Social Media App, welche Nutzern es ermöglicht, PDF Dokumente als Posts zu erstellen. Der <em>Social Media</em> Aspekt ist umgesetzt in Form eines Follow Features, Direct Messaging und Interaktion auf Posts. Ein Fokus wird auf Dokumente gelegt, durch Features wie ein virtuelles Ordnerverzeichnis, detallierte Dokumente Vorschaus und Weiteres.",
+      "p3": ""
+    },
+    "t2": {
+      "h": "Wie es gebaut ist",
+      "p1": "Es handelt es hierbei um eine Client/Server Architektur. Der Server Side Code ist in Java (Spring Boot) geschrieben. Der Server stellt REST Endpunkte zur Verfügung, die vom Clienten verwendet werden. Drittens, eine NoSQL Datenbank wird auf Google's Cloud Service <em>Firebase</em> verwendet. Alle Nutzer- und Systemdaten leben auf Firebase, während der Spring Server diese Daten zum Client kommuniziert.",
+      "p2": "Es war nicht notwendig diese App als REST Service zu entwickeln. Genau genommen würde es ausreichen, dass der Client direkt zu Firebase kommuniziert. Jedoch ist es ein Sicherheitsvorteil, da der Spring Server als Proxy zwischen Firebase Cloud und Client agiert. Zudem kann man die typischen Vorteile einer REST Architektur ausnutzen, wie das Hinzufügen von weiteren Clients, die mit dem selben Server sprechen."
+    }
+  },
+  "DegreesShowcase": {
+    "t1": {
+      "h": "Degrees of Seperation",
+      "p1": "<em>Six Degrees of Separation</em> ist das soziale Phänomen, dass zwei beliebige Menschen von nur etwa sechs Beziehungen voneinander getrennt sind. In anderen Worten, kann man eine Kette aus 'Freunden von Freunden' erstellen, welche zwei beliebige Menschen in maximal Sechs Schritte miteinander verbindet. Das Ziel dieser App ist es, dieses Konzept durch Musiker und ihre Kollegen zu illustrieren. Der Nutzer kann zwei Künstlernamen eingeben, woraufhin der Algorithmus die Grade der Trennung zwischen den Beiden ermittelt, indem jeweils ihre Netzwerke nach gemeinsamen Kontakten durchsucht werden.",
+      "p2": "Was bedeutet das Ergebnis? Im Grunde sagt die 'Ergebnisliste' aus, dass Künstler A <em>sehr ähnlich</em> ist zu Künstler B, und dieser wiederum zu Künstler C und so weiter. Im Grunde ist es eine Art 'Übergang' von ersten Künstler zum Letzten. Interessanterweise, ergibt der Algorithmus im Durchschnitt tatsächlich sechs Grade."
+    },
+    "t2": {
+      "h": "Wie es gebaut wurde",
+      "p1": "Es gibt zwei Komponenten zum Code. Im Ersten werden die 'sozialen Verbindungen' der Künstler geholt. Was hierbei gemeint ist, mit 'sozialen Verbindungen', sind Listen von <em>ähnlichen Künstler</em> laut der Musikdatenbank <em>Last FM</em>. Die Liste enthält nach absteigender Relevanz, Künstler, die oft mit dem Ursprungskünstler zusammenarbeiten oder die selben Zuhörer haben. Mit diesen 'Freundeslisten' der Künstler, resultiert ein <em>Graph bzw. ein Netzwerk</em> von Künstlern.",
+      "p2": "Die zweite Komponente ist das Durchsuchen dieses Netzwerkes. Dazu wird ein Graph-Algorithmus, <em>bidirektionale Breitensuche</em>, verwendet, um überlappende Kontakte zu finden.",
+      "p3": "Der Graph-Algorithmus ist optimiert und liefert eine gute Laufzeit in diesem Use Case. Die Suchzeit ist <em>O(b<sup>d/2</sup> + b<sup>d/2</sup>)</em>. Aber trotzdem, die Suchzeit bei sehr unterschiedlichen Einträgen kann zu eine minuten-lange Suche führen. Der Grund sind die Requests zur API, mit der die Künstlernetzwerke geholt werden. Je weiter weg die beiden gesuchten Künstler sind, desto riesiger wird der Graph, durch exponentiellem Wachstum (etwa n<sup>8</sup> Einträge per Suchtiefe). Die Lösung für dieses Problem ist <em>Caching</em>. Bereits ermittelte Ergebnis werden im lokalen Cache geladen, sodass beim nächsten Aufruf nur die pure Graphsuche die Laufzeit bestimmt."
+    }
+  },
+  "CanisterShowcase": {
+    "t1": {
+      "h": "Canister",
+      "p1": "Canister ist eine CRUD Applikation, auf der Nutzer Twitter-ähnliche Text-Posts erstellen können. Bei Anmeldung wird ein temporärer Nutzeraccount erstellt, der an die IP Adresse gebunden ist. Gebaut mit dem MEVN Stack: MongoDB, Express, Vue und Node."
+    },
+    "t2": {
+      "h": "",
+      "p1": ""
+    }
+  },
+  "SchedulerShowcase": {
+    "t1": {
+      "h": "Scheduler",
+      "p1": "Eine Java Desktop Applikation. Eine simple Orga App, zum organisieren von Events und Terminen. Die UI ist mit einem eigenen Microframework auf Java Swing Basis erstellt. Die Datenbank ist eine MySQL Cloud Lösung."
+    },
+    "t2": {
+      "h": "",
+      "p1": ""
+    }
+  }
+}

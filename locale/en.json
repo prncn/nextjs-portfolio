@@ -1,0 +1,103 @@
+{
+  "Index": {
+    "heroHeading": "Some selected projects.",
+    "heroSubheading": "Portfolio of developed and upcoming software projects, fullstack and web-based. Based in Frankfurt. Currently working on my Bachelor's Degree.",
+    "caseHeading": "projects",
+    "artstationLink": "Illstrations",
+    "mailLink": "Contact",
+    "currentProjectHeading": "Current Code Project",
+    "currentProjectText": "ThreeJS web app to customise vector modelling."
+  },
+  "Resume": {
+    "resumeHeading": "Résumé.",
+    "resumeIntro": "Currently finishing my Bachelor's Degree. I like designing and I love problem-solving through code even more. My approach when creating projects is to be as use case oriented as possible. Regardless of tech stack, it should primarily deliver what the user wants and needs, while also offering a pleasurable visual experience.",
+    "workExp": {
+      "u9": "School Internship at a graphic design agency. My project was to create a 3D animation render to promote a job searching fair called <em>Hobit</em>.",
+      "xD": "My project was to introduce an enterprise resource planning system to the companies accounting dep. My solution was to write python code that translates existing financial spreadsheets to the new ERP database. Later, I built a streamlined frontend."
+    },
+    "gitHeader": "Current Usage on Github"
+  },
+  "Navbar": {
+    "works": "Works",
+    "resume": "Resume",
+    "locale": "de"
+  },
+  "ShowcaseCard": {
+    "murdocIntroText": "Ever wanted a social media app that specifically lets you share PDF documents? No? Well, now you do. This Spring (REST Server) / React (Client) project lets users post and discover documents in a modern way.",
+    "mitmdemoIntroText": "A Man in the middle hacking tool that lets you hack an integrated chat messenger. This app serves as a educational tool so that users may better understand the mechanics behind proxy packet sniffing. The frontend is build on react and the proxy logic in node.",
+    "playlistsIntroText": "This project started as a Python script to fetch Youtube music to Spotify. Connect your Google and Spotify accounts (using OAuth) and bring your recently liked music from Youtube to a Spotify playlist on your account. Further, preview your playlists collections and view some stats on your listening habits.",
+    "degreesofseperationIntroText": "Six degrees of seperation is the idea that any two people are on average connected by six social contacts. Given two artists names, this app fetches each of their networks of similar artists from a music database and searches their shared connections. This is realised through a path-finding algorithm  (bidirectional bradth-first search) traversing through the fetched data.",
+    "canisterIntroText": "Canister is a CRUD application allowing for twitter-like message postings. Users connect with their IP addresses to create anonymous and temporary posts. The web app is build on the MEVN stack: MongoDB, Express, Vue and Node. User posts are stored and fetched through a REST API, communicating with a MongoDB Atlas cloud database.",
+    "schedulerIntroText": "A Java application. Create events and meetings to organise them on your personal calendar and dashboard. Invite other users to those events and notify them on changes in planning. The UI is built with Swing and user data is handled in a cloud MySQL solution.",
+    "next": "Next Project"
+  },
+  "PlaylistsShowcase": {
+    "t1": {
+      "h": "The Idea",
+      "p1": "This started as a Python script which was later expanded to a Flask web app. The main feature here, is to detect music videos which were liked on the users YouTube account and then import them to their Spotify account. To achieve this, the user has to connect to their Google account and Spotify account, respectively. Other features were added, so that you may view your playlists (and preview them), as well as see statistics on your listening habits."
+    },
+    "t2": {
+      "h": "How it is built",
+      "p1": "This was my first project involving over 2,000 lines of code. The script was written in Python. It works by communicating to the Spotify and YouTube REST APIs. Without a doubt, the most challenging aspect of this project was implementing the authentication user flow. Both Spotify and Google use OAuth 2.0 for their login flows. Flask is a lightweight framework to build python web code. With that, the frontend was built, as well as the server side logic. "
+    }
+  },
+  "MitmDemoShowcase": {
+    "t1": {
+      "h": "The Idea",
+      "p1": "The app was written for a uni project on the topic of Info Security. The project let's you explore the idea of <em>man in the middle attacks</em>. In Info Security, the term is used to describe a person relaying and manipulating communication between two parties. This may allow them to eavesdrop a conversation between two users or even alter data.",
+      "p2": "This app has an integrated chat messenger that works over web sockets. The point of that chat messenger is to simulate a familiar, day-to-day, web app experience. The messenger also serves the purpose of creating data that can be eavesdropped by our proxy instance.",
+      "p3": "Our 'hacking' tool is designed to look like operating system bash console. In it, you can use a selection of command that trigger an 'attack'. You can read chat messages (over network packets), interject them and modify them, see device interfaces in your own network and more."
+    },
+    "t2": {
+      "h": "How it is built",
+      "p1": "The frontend in built in <em>React</em>. The backend code is written in <em>NodeJS</em>. Our backend creates a proxy server that acts as the <em>MITM instance</em> between our React client and our web server. The web server handles web socket protocols, api routes and other backend stuff for our app experience.",
+      "p2": "The proxy server intercepts any traffic that is sent from the client to the server. It can forward them as is, or forward them after manipulating the data. This mechanic is what we are using as the hacking tool. The purpose of our project is to introduce the topic of MITM attack in an interactive way."
+    }
+  },
+  "MurdocShowcase": {
+    "t1": {
+      "h": "The Idea",
+      "p1": "This React app was developed for a uni project. Our only direction was to build any type of software product that is able to interface a database.",
+      "p2": "<em>Murdoc</em> is a social media app that let's users post PDF documents on their timelines. It offers typical features you would expect from a social media platform. Users are able follow each other, message each other, as well as like and comment on posts. The document sharing comes in focus, by expanding the features to interact with document posts. For instance, you could save a post and view that post in your personal virtual directory. Or, you could refer to a specific page of a document in a comment, which let's you directly jump to that page (similar to how YouTube comment timestamps work).",
+      "p3": "Creating this app was not exactly about creating a ground-breaking way to handle documents. In the real world, this app would not find a large demand in use cases. Rather, the point of this project was learning the underlying tech"
+    },
+    "t2": {
+      "h": "How it is built",
+      "p1": "The project has a client/server architecture. The server side code is written in Java (Spring Boot). The Spring server exposes REST endpoint which are fetched and fed by our React client. The third instance, our database, is Google's Firebase cloud service. The data lives on that cloud, while the Spring server handles communicating that data.",
+      "p2": "Building the project as a REST service is entirely unnecessary and even somewhat impractical from a developement perspective, as the results could have been achieved by simply letting the React client communicate directly to Firebase. It does however increase security, as our Spring server acts as a proxy between the cloud and client, and moreover, one could expand our REST system by creating other clients, which could talk to the same REST server. This is a typical advantage of REST services."
+    }
+  },
+  "DegreesShowcase": {
+    "t1": {
+      "h": "Degrees of Seperation",
+      "p1": "Six degrees of separation is the idea that all people are six or fewer social connections away from each other. As a result, a chain of 'friend of a friend' statements can be made to connect any two people in a maximum of six steps. The goal of this app is to illustrate this social phenomenon by searching the common relationships between two random music artists. The user inputs two artists' names and the algorithm searches through their networks to find common contacts.",
+      "p2": "What does the resulting list mean? Basically, it says that artist a is very similar to artist b, who in turn is similar to c, and so on. In a way it is a gradient from one artist to the other. Interestingly, the algorithm does in fact output around six degrees on average."
+    },
+    "t2": {
+      "h": "How it is built",
+      "p1": "There are two segments to the code. The first part is to fetch an artist's network of social connection. The term <em>social connections</em> is used somewhat vaguely in this context. What is meant is, a group of other artists that have some sort of direct relationship to that original artist. In this case, that group would be the list of <em>similar artists</em> as generated by the music database <em>last.fm</em>. So, the first part of the code fetches a group of artists for any one artists. This represented as a node connected to other nodes,  making it a graph network.",
+      "p2": "The second part of the code searches through the resulting graph network for common nodes. This is done with a bi-directional breadth-first-search algorithm, which offers the best performance for this particular graph. <em>Breadth-first</em> means that each level of depth is searched through after the other, which itself is done from both input nodes <em>(hence, bi-directional)</em>.",
+      "p3": "The graph algorithm is very fast, with a complexity of <em>O(b<sup>d/2</sup> + b<sup>d/2</sup>)</em>. Still, inputing two very different artists results in a search that could take up several minutes or even longer. The reason is the API fetching part of the code, which may have to fetch hundreds of artists. This grows exponentially, the further apart the two artists are. This is somewhat mitigated with <em>caching</em>."
+    }
+  },
+  "CanisterShowcase": {
+    "t1": {
+      "h": "Coming soon. Probably.",
+      "p1": ""
+    },
+    "t2": {
+      "h": "",
+      "p1": ""
+    }
+  },
+  "SchedulerShowcase": {
+    "t1": {
+      "h": "Coming soon. Probably.",
+      "p1": ""
+    },
+    "t2": {
+      "h": "",
+      "p1": ""
+    }
+  }
+}
