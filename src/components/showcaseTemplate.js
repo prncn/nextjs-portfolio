@@ -3,6 +3,7 @@ import ReactPlayer from 'react-player';
 import Navbar from './navbar';
 import { useTranslations } from 'next-intl';
 import { BsArrowRight } from 'react-icons/bs';
+import { useMediaQuery } from 'react-responsive';
 import Link from 'next/link';
 
 export async function getStaticProps({ locale }) {
@@ -24,6 +25,8 @@ export default function ShowcaseTemplate({
   next,
 }) {
   const t = useTranslations('ShowcaseCard');
+  const SCREEN_SM = useMediaQuery({ query: '(max-width: 640px)' });
+
   return (
     <>
       <Navbar />
@@ -34,7 +37,7 @@ export default function ShowcaseTemplate({
         className={`bg-gradient-to-b from-slate-50 ${bgColor} flex flex-col items-center pt-10 text-black`}
       >
         <Link href={`/showcase/${next}`}>
-          <a className="absolute top-40 right-20 hover:translate-x-1 hover:-translate-y-1 z-0">
+          <a className="absolute top-40 lg:right-20 right-10 hover:translate-x-1 hover:-translate-y-1 z-0">
             <span className="lowercase text-xl">
               {t('next')}
               <br />
@@ -43,14 +46,17 @@ export default function ShowcaseTemplate({
             <BsArrowRight />
           </a>
         </Link>
-        <div className="w-4/5">
-          <div className="h-96" />
-          <h1 className="text-8xl lowercase font-display font-medium w-32 my-10">
-            {title}
-          </h1>
-          <p className="text-justify">{info}</p>
+        <div className="lg:w-4/5 w-full">
+          <div className="xl:px-0 px-4 mt-96">
+            <h1
+              className={`xl:text-8xl text-7xl lowercase font-display font-medium w-32 my-10`}
+            >
+              {title}
+            </h1>
+            <p className="text-justify">{info}</p>
+          </div>
           <div
-            className="relative overflow-hidden rounded-xl my-20"
+            className={`relative overflow-hidden lg:rounded-xl my-20`}
             style={{ paddingTop: '56.25%' }}
           >
             <ReactPlayer
@@ -61,18 +67,18 @@ export default function ShowcaseTemplate({
               playing={true}
               width="100%"
               height="100%"
-              className="rounded-xl overflow-hidden absolute top-0 left-0"
+              className={`lg:rounded-xl overflow-hidden absolute top-0 left-0`}
             />
           </div>
 
           <div className="flex justify-center">
-            <div className="w-1/2 flex flex-col space-y-4 my-10">
+            <div className="w-full lg:w-1/2 flex flex-col space-y-4 my-10 xl:px-0 px-4">
               {children}
             </div>
           </div>
           {secondVid && (
             <div
-              className="relative overflow-hidden rounded-xl my-20"
+              className={`relative overflow-hidden lg:-xl my-20`}
               style={{ paddingTop: '56.25%' }}
             >
               <ReactPlayer
@@ -83,13 +89,13 @@ export default function ShowcaseTemplate({
                 playing={true}
                 width="100%"
                 height="100%"
-                className="rounded-xl overflow-hidden absolute top-0 left-0"
+                className={`lg:rounded-xl overflow-hidden absolute top-0 left-0`}
               />
             </div>
           )}
           {thirdVid && (
             <div
-              className="relative overflow-hidden rounded-xl my-20"
+              className={`relative overflow-hidden lg:rounded-xl my-20`}
               style={{ paddingTop: '56.25%' }}
             >
               <ReactPlayer
@@ -100,7 +106,7 @@ export default function ShowcaseTemplate({
                 playing={true}
                 width="100%"
                 height="100%"
-                className="rounded-xl overflow-hidden absolute top-0 left-0"
+                className={`lg:rounded-xl overflow-hidden absolute top-0 left-0`}
               />
             </div>
           )}

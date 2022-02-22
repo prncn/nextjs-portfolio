@@ -3,8 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '../components/navbar';
 import { LiquidDistortionText } from 'react-text-fun';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useReducer, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { useMediaQuery } from 'react-responsive';
+import VisibilitySensor from 'react-visibility-sensor';
 
 export async function getStaticProps({ locale }) {
   return {
@@ -16,8 +18,12 @@ export async function getStaticProps({ locale }) {
 
 export default function Home() {
   const t = useTranslations('Index');
-  const [liquify, setLiquify] = useState(0);
+  const [liquifyValue, setLiquifyValue] = useState(0);
   const [scrollY, setScrollY] = useState(0);
+  const [liquifyOnScreen, setLiquifyOnScreen] = useState(false);
+  const liquidRef = useRef();
+
+  const SCREEN_SM = useMediaQuery({ query: '(max-width: 640px)' });
 
   function HeroBtn({ children }) {
     return (
@@ -28,10 +34,18 @@ export default function Home() {
   }
 
   function moveHandler(event) {
-    const newVol = liquify;
-    newVol += Math.abs(event.movementX) * 0.0001;
-    newVol += Math.abs(event.movementY) * 0.0001;
-    setLiquify(newVol);
+    if (liquifyOnScreen) {
+      const newVol = liquifyValue;
+      newVol += Math.abs(event.movementX) * 0.0001;
+      newVol += Math.abs(event.movementY) * 0.0001;
+      setLiquifyValue(newVol);
+    } else {
+      setLiquifyValue(0);
+    }
+  }
+
+  function onVisible(isVisible) {
+    setLiquifyOnScreen(isVisible);
   }
 
   const handleScroll = useCallback(() => {
@@ -46,17 +60,17 @@ export default function Home() {
   }, [handleScroll]);
 
   return (
-    <div className="bg-slate-50 w-full">
+    <div className="bg-slate-50 w-full overflow-hidden">
       <Head>
         <title>Princen Kumar | Portfolio</title>
         <meta name="description" content="Portfolio of Code Projects" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <div className="flex justify-center pt-10 bg-gradient-to-b from-slate-50 to-indigo-200">
+      <div className="flex justify-center pt-10 bg-gradient-to-b from-slate-50 to-indigo-200 overflow-hidden">
         <div className="xl:w-3/4 w-full">
-          <div className="flex flex-col md:flex-row mt-10 lg:p-10 p-5 justify-center">
-            <div className="w-1/2">
+          <div className="flex flex-col-reverse md:flex-row my-10 lg:p-10 p-5 justify-center overflow-hidden">
+            <div className="xl:w-1/3 w-full">
               <h1 className="uppercase font-semibold text-sm tracking-wider text-gray-500 mb-5">
                 Fullstack Projects
               </h1>
@@ -77,18 +91,19 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="h-full flex items-center">
-              <Image
-                src="/images/psd_annie_bercy.png"
-                alt="Page Illustration"
-                width={900}
-                height={700}
-                objectFit="contain"
-              />
-              <div className="rotate-90 hover:translate-x-1 w-10 hover:translate-y-1 place-start">
+            <div className="h-full flex items-center -mx-10 mb-10 relative overflow-hidden">
+              <div style={{ width: 700, height: 500 }}>
+                <Image
+                  src="/images/psd_annie_bercy.png"
+                  alt="Page Illustration"
+                  layout="fill"
+                  objectFit="contain"
+                />
+              </div>
+              <div className="rotate-90 hover:translate-x-1 w-10 hover:translate-y-1 absolute xl:right-0 right-10">
                 <Link href={'https://www.artstation.com/prncn'}>
                   <a
-                    className="uppercase h-4 max-h-fit text-xl font-display"
+                    className="uppercase h-4 max-h-fit text-sm font-display"
                     target="_blank"
                   >
                     {t('artstationLink')}
@@ -97,38 +112,48 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="w-full h-72 my-20 flex flex-col lg:flex-row lg:px-0 px-2 space-x-4 overflow-hidden">
-            <div className="flex flex-col justify-end items-end text-right h-full lg:w-96 w-full rounded-2xl text-white bg-gradient-to-t from-orange-100 to-violet-300 animate-gradient-y p-2">
+          <div className="w-full lg:my-20 flex flex-col lg:flex-row lg:px-0 px-2 lg:space-x-4 overflow-hidden">
+            <div className="h-72 flex flex-col justify-end items-end text-right lg:w-96 w-full rounded-2xl text-white bg-gradient-to-t from-orange-100 to-violet-300 animate-gradient-y p-2">
               <span className="text-4xl font-semibold w-3/4 lowercase">
                 {t('currentProjectHeading')}
               </span>
               <p className="py-4">{t('currentProjectText')}</p>
             </div>
-            <div
-              className="w-full overflow-hidden"
-              onMouseMove={(event) => moveHandler(event)}
-            >
-              <LiquidDistortionText
-                text="case studies &"
-                fontFamily="Inter, sans-serif"
-                fill="#374151"
-                fontSize={100}
-                speed={0.01}
-                lineHeight={1}
-                volatility={Math.min(scrollY / 1000, 2)}
-              />
-              <LiquidDistortionText
-                text={t('caseHeading')}
-                fontFamily="Inter, sans-serif"
-                fill="#374151"
-                fontSize={100}
-                speed={0.01}
-                lineHeight={1}
-                volatility={Math.min(scrollY / 1000, 2)}
-              />
-            </div>
+            <VisibilitySensor onChange={onVisible}>
+              <div
+                className="w-full overflow-hidden my-20 lg:m-0"
+                onMouseMove={(event) => moveHandler(event)}
+                ref={liquidRef}
+              >
+                <LiquidDistortionText
+                  text="case studies &"
+                  fontFamily="Inter, sans-serif"
+                  fill="#374151"
+                  fontSize={SCREEN_SM ? 50 : 100}
+                  speed={0.01}
+                  lineHeight={1}
+                  volatility={Math.min(
+                    (scrollY - liquidRef.current?.offsetTop + 500) / 1000,
+                    2
+                  )}
+                />
+
+                <LiquidDistortionText
+                  text={t('caseHeading')}
+                  fontFamily="Inter, sans-serif"
+                  fill="#374151"
+                  fontSize={SCREEN_SM ? 50 : 100}
+                  speed={0.01}
+                  lineHeight={1}
+                  volatility={Math.min(
+                    (scrollY - liquidRef.current?.offsetTop + 500) / 1000,
+                    2
+                  )}
+                />
+              </div>
+            </VisibilitySensor>
           </div>
-          <div className="flex flex-col space-y-32 overflow-hidden">
+          <div className="flex flex-col space-y-32 overflow-hidden divide-x-2 lg:divide-x-0 pb-10">
             {SHOWCASES.map((showcase) => (
               <ProjectShowcaseCard showcase={showcase} key={showcase.name} />
             ))}
@@ -137,66 +162,24 @@ export default function Home() {
         </div>
       </div>
       <footer className="bg-black w-full h-40 flex justify-center">
-        <div className="xl:w-1/2 w-full h-full flex items-center font-thin text-stone-300 text-sm py-4">
+        <div className="xl:w-1/2 w-4/5 h-full flex items-center font-thin text-stone-300 text-sm py-4">
           <div className="w-1/2 flex justify-between">
             <div className="flex flex-col">
               <span className="font-bold mb-4 text-white">LINKS</span>
               <div className="flex flex-col space-y-1">
-                <Link href="">
+                <Link href="/">
                   <a>Github</a>
                 </Link>
-                <Link href="">
+                <Link href="/">
                   <a>Spotify</a>
                 </Link>
-                <Link href="">
-                  <a>Email</a>
-                </Link>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold mb-4 text-white">LINKS</span>
-              <div className="flex flex-col space-y-1">
-                <Link href="">
-                  <a>Github</a>
-                </Link>
-                <Link href="">
-                  <a>Spotify</a>
-                </Link>
-                <Link href="">
-                  <a>Email</a>
-                </Link>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold mb-4 text-white">LINKS</span>
-              <div className="flex flex-col space-y-1">
-                <Link href="">
-                  <a>Github</a>
-                </Link>
-                <Link href="">
-                  <a>Spotify</a>
-                </Link>
-                <Link href="">
-                  <a>Email</a>
-                </Link>
-              </div>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold mb-4 text-white">LINKS</span>
-              <div className="flex flex-col space-y-1">
-                <Link href="">
-                  <a>Github</a>
-                </Link>
-                <Link href="">
-                  <a>Spotify</a>
-                </Link>
-                <Link href="">
+                <Link href="/">
                   <a>Email</a>
                 </Link>
               </div>
             </div>
           </div>
-          <div className="w-1/2 flex flex-col items-end h-full ">
+          <div className="xl:w-1/2 flex flex-col items-end h-full text-right">
             <span className="text-xl text-white mt-auto">
               Princen Kumar <span className="font-bold">Portfolio</span>
             </span>
@@ -243,6 +226,10 @@ const SHOWCASES = [
 
 function ProjectShowcaseCard({ showcase }) {
   const t = useTranslations('ShowcaseCard');
+  const [hover, setHover] = useState(false);
+  const titleWidth = useRef();
+  const containerWidth = useRef();
+
   return (
     <div className="w-full flex flex-col lg:flex-row">
       <Link href={`/showcase/${showcase.name}`}>
@@ -259,9 +246,27 @@ function ProjectShowcaseCard({ showcase }) {
       </Link>
       <div className="lg:w-2/5 w-full px-8 py-8 lg:py-0 self-end space-y-4">
         <p>{showcase.lang}</p>
-        <div className="w-full transition hover:-translate-x-1/4">
+        <div
+          className="max-w-fit transition"
+          style={{
+            transform: hover
+              ? `translateX(-${
+                  titleWidth.current?.offsetWidth -
+                  containerWidth.current?.offsetWidth
+                }px)`
+              : '',
+          }}
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          ref={containerWidth}
+        >
           <Link href={`/showcase/${showcase.name}`}>
-            <a className="text-9xl font-semibold font-mono ">{showcase.name}</a>
+            <a
+              className="lg:text-9xl text-8xl font-semibold font-mono"
+              ref={titleWidth}
+            >
+              {showcase.name}
+            </a>
           </Link>
         </div>
         <p className="text-sm text-justify">{t(`${showcase.name}IntroText`)}</p>
@@ -273,9 +278,13 @@ function ProjectShowcaseCard({ showcase }) {
               </button>
             </a>
           </Link>
-          <button className="w-28 h-14 border hover:shadow-hard hover:translate-y-1 border-black">
-            <span className="text-sm">Case Study</span>
-          </button>
+          <Link href={`/showcase/${showcase.name}`}>
+            <a>
+              <button className="w-28 h-14 border hover:shadow-hard hover:translate-y-1 border-black">
+                <span className="text-sm">Case Study</span>
+              </button>
+            </a>
+          </Link>
         </div>
       </div>
     </div>

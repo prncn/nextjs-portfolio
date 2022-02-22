@@ -6,6 +6,7 @@ import { LiquidDistortionText } from 'react-text-fun';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { getRepoLangPercentages } from '../gitapi';
+import { useMediaQuery } from 'react-responsive';
 
 export async function getStaticProps({ locale }) {
   return {
@@ -30,6 +31,8 @@ export default function Resume() {
   const [showLangs, setShowLangs] = useState(false);
   const [gitLangs, setGitLangs] = useState({});
 
+  const SCREEN_SM = useMediaQuery({ query: '(max-width: 640px)' });
+
   function moveHandler(event) {
     const newVol = liquify;
     newVol += Math.abs(event.movementX) * 0.0001;
@@ -51,7 +54,6 @@ export default function Resume() {
   useEffect(() => {
     (async () => {
       const langs = await getRepoLangPercentages();
-      console.log(langs);
       setGitLangs(langs);
     })();
   }, []);
@@ -81,7 +83,13 @@ export default function Resume() {
                 </div>
               </div>
             </h1>
-            <span className="text-7xl font-display font-medium">
+            <span
+              className={`xl:text-7xl text-6xl font-display font-medium ${
+                SCREEN_SM
+                  ? 'bg-gradient-to-t from-orange-100 to-violet-300 animate-gradient-y'
+                  : 'bg-transparent'
+              }`}
+            >
               {t('resumeHeading')}
             </span>
             <p className="mt-10">{t('resumeIntro')}</p>
@@ -90,23 +98,23 @@ export default function Resume() {
             <LiquidDistortionText
               text="THINGS I LIKE"
               fill="white"
-              fontSize={100}
+              fontSize={SCREEN_SM ? 50 : 100}
               fontWeight={'bold'}
               speed={0.01}
               lineHeight={1}
               volatility={Math.min(scrollY / 1000, 2)}
-              style={{ fontFamily: 'Inter ' }}
+              style={{ fontFamily: 'Inter' }}
               id="skills"
             />
             <LiquidDistortionText
               text="TO WORK WITH"
               fill="white"
-              fontSize={100}
+              fontSize={SCREEN_SM ? 50 : 100}
               fontWeight={'bold'}
               speed={0.01}
               lineHeight={1}
               volatility={Math.min(scrollY / 1000, 2)}
-              style={{ fontFamily: 'Inter ' }}
+              style={{ fontFamily: 'Inter' }}
               id="skills"
             />
           </div>
@@ -123,7 +131,7 @@ export default function Resume() {
             <LiquidDistortionText
               text="WORK EXPERIENCE"
               fill="white"
-              fontSize={100}
+              fontSize={SCREEN_SM ? 50 : 100}
               fontWeight={'bold'}
               speed={0.01}
               volatility={Math.min(
@@ -160,7 +168,7 @@ export default function Resume() {
             <LiquidDistortionText
               text="EDUCATION"
               fill="white"
-              fontSize={100}
+              fontSize={SCREEN_SM ? 50 : 100}
               fontWeight={'bold'}
               speed={0.01}
               volatility={Math.min(

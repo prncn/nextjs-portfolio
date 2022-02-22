@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 export async function getStaticProps({ locale }) {
@@ -13,7 +14,14 @@ export async function getStaticProps({ locale }) {
 
 export default function Navbar({ dark }) {
   const t = useTranslations('Navbar');
+  const [menuOpen, setMenuOpen] = useState(false);
   const { route, pathname } = useRouter();
+
+  function handleMenuModal() {
+    setMenuOpen(!menuOpen);
+    document.body.style.overflow = 'hidden';
+    dark = false;
+  }
 
   return (
     <div
@@ -27,9 +35,18 @@ export default function Navbar({ dark }) {
           <span className="font-semibold">Portfolio</span>
         </a>
       </Link>
-      <div className="ml-auto lg:hidden block text-2xl">
+      <div
+        className="ml-auto lg:hidden block text-2xl"
+        onClick={handleMenuModal}
+      >
         <GiHamburgerMenu />
       </div>
+      {menuOpen && (
+        <div
+          className="absolute top-20 left-0 w-screen h-screen bg-black"
+          style={{ zIndex: 500 }}
+        ></div>
+      )}
       <div className="ml-auto lg:flex space-x-5 cursor-pointer hidden">
         <Link href={route} locale={t('locale')}>
           <a className={`hover:font-semibold uppercase`}>{t('locale')}</a>
