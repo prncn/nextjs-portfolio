@@ -57,7 +57,10 @@ export default function ShowcaseTemplate({
           </div>
           <div
             className={`relative overflow-hidden lg:rounded-xl my-20`}
-            style={{ paddingTop: '56.25%' }}
+            style={{
+              paddingTop: '56.25%',
+              height: SCREEN_SM ? '20rem' : 'auto',
+            }}
           >
             <ReactPlayer
               url={`/videos/${firstVid}.mp4`}
@@ -65,8 +68,9 @@ export default function ShowcaseTemplate({
               loop
               muted
               playing={true}
-              width="100%"
               height="100%"
+              width={SCREEN_SM ? '35rem' : '100%'}
+              playsinline
               className={`lg:rounded-xl overflow-hidden absolute top-0 left-0`}
             />
           </div>
@@ -78,8 +82,11 @@ export default function ShowcaseTemplate({
           </div>
           {secondVid && (
             <div
-              className={`relative overflow-hidden lg:-xl my-20`}
-              style={{ paddingTop: '56.25%' }}
+              className={`relative overflow-hidden lg:rounded-xl my-20`}
+              style={{
+                paddingTop: '56.25%',
+                height: SCREEN_SM ? '20rem' : 'auto',
+              }}
             >
               <ReactPlayer
                 url={`/videos/${secondVid}.mp4`}
@@ -87,8 +94,9 @@ export default function ShowcaseTemplate({
                 loop
                 muted
                 playing={true}
-                width="100%"
                 height="100%"
+                width={SCREEN_SM ? '35rem' : '100%'}
+                playsinline
                 className={`lg:rounded-xl overflow-hidden absolute top-0 left-0`}
               />
             </div>
@@ -96,7 +104,10 @@ export default function ShowcaseTemplate({
           {thirdVid && (
             <div
               className={`relative overflow-hidden lg:rounded-xl my-20`}
-              style={{ paddingTop: '56.25%' }}
+              style={{
+                paddingTop: '56.25%',
+                height: SCREEN_SM ? '20rem' : 'auto',
+              }}
             >
               <ReactPlayer
                 url={`/videos/${thirdVid}.mp4`}
@@ -104,8 +115,9 @@ export default function ShowcaseTemplate({
                 loop
                 muted
                 playing={true}
-                width="100%"
                 height="100%"
+                width={SCREEN_SM ? '35rem' : '100%'}
+                playsinline
                 className={`lg:rounded-xl overflow-hidden absolute top-0 left-0`}
               />
             </div>

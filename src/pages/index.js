@@ -59,6 +59,10 @@ export default function Home() {
     };
   }, [handleScroll]);
 
+  useEffect(() => {
+    document.body.style.overflow = 'auto';
+  }, []);
+
   return (
     <div className="bg-slate-50 w-full overflow-hidden">
       <Head>
@@ -68,9 +72,9 @@ export default function Home() {
       </Head>
       <Navbar />
       <div className="flex justify-center pt-10 bg-gradient-to-b from-slate-50 to-indigo-200 overflow-hidden">
-        <div className="xl:w-3/4 w-full">
+        <div className="lg:w-3/4 w-full">
           <div className="flex flex-col-reverse md:flex-row my-10 lg:p-10 p-5 justify-center overflow-hidden">
-            <div className="xl:w-1/3 w-full">
+            <div className="lg:w-1/3 w-full">
               <h1 className="uppercase font-semibold text-sm tracking-wider text-gray-500 mb-5">
                 Fullstack Projects
               </h1>
@@ -92,7 +96,12 @@ export default function Home() {
               </div>
             </div>
             <div className="h-full flex items-center -mx-10 mb-10 relative overflow-hidden">
-              <div style={{ width: 700, height: 500 }}>
+              <div
+                style={{
+                  width: 700,
+                  height: `${SCREEN_SM ? '400px' : '500px'}`,
+                }}
+              >
                 <Image
                   src="/images/psd_annie_bercy.png"
                   alt="Page Illustration"
@@ -167,13 +176,13 @@ export default function Home() {
             <div className="flex flex-col">
               <span className="font-bold mb-4 text-white">LINKS</span>
               <div className="flex flex-col space-y-1">
-                <Link href="/">
+                <Link href="https://github.com/prncn">
                   <a>Github</a>
                 </Link>
-                <Link href="/">
+                <Link href="https://open.spotify.com/user/sinkosh?si=d56b72fb50ec487e">
                   <a>Spotify</a>
                 </Link>
-                <Link href="/">
+                <Link href="mailto: princen@outlook.de">
                   <a>Email</a>
                 </Link>
               </div>

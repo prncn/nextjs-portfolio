@@ -58,6 +58,10 @@ export default function Resume() {
     })();
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = 'auto';
+  }, []);
+
   return (
     <div className="bg-slate-50">
       <Head>
