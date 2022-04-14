@@ -27,7 +27,7 @@ export default function Home() {
 
   function HeroBtn({ children }) {
     return (
-      <button className="w-28 h-14 border hover:shadow-hard hover:translate-y-1 border-black">
+      <button className="px-5 h-14 border hover:shadow-hard hover:translate-y-1 border-black">
         {children}
       </button>
     );
@@ -73,12 +73,12 @@ export default function Home() {
       <Navbar />
       <div className="flex justify-center pt-10 bg-gradient-to-b from-slate-50 to-indigo-200 overflow-hidden">
         <div className="lg:w-3/4 w-full">
-          <div className="flex flex-col-reverse md:flex-row my-10 lg:p-10 p-5 justify-center overflow-hidden">
-            <div className="lg:w-1/3 w-full">
+          <div className="flex flex-col-reverse md:flex-row my-10 justify-center overflow-hidden xl:py-24">
+            <div className="xl:w-2/5 w-full">
               <h1 className="uppercase font-semibold text-sm tracking-wider text-gray-500 mb-5">
                 Fullstack Projects
               </h1>
-              <span className="text-7xl text-gray-700 font-display font-medium">
+              <span className="text-7xl xl:text-9xl text-gray-700 font-bold uppercase tracking-tighter">
                 {t('heroHeading')}
               </span>
               <p className="mt-10">{t('heroSubheading')}</p>
@@ -90,7 +90,7 @@ export default function Home() {
                 </Link>
                 <Link href="mailto: princen@outlook.de">
                   <a>
-                    <HeroBtn>{t('mailLink')}</HeroBtn>
+                    <HeroBtn>princen@outlook.de</HeroBtn>
                   </a>
                 </Link>
               </div>
